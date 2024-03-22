@@ -1,0 +1,28 @@
+
+
+1. download and install kafka
+	change in server.properties
+	log.dirs=D:/kafka/kafka-logs
+	===========
+	change in zookeeper.properties
+	dataDir=D:/kafka/zookeeper
+2 . start kafka
+	#start the zookeeper service
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+#start kafka broker service
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+3. create a topic to store your events
+.\bin\windows\kafka-topics.bat --create --topic topic_demo --bootstrap-server localhost:9092
+
+4. write some events into the topic
+	.\bin\windows\kafka-console-producer.bat --topic topic_demo --bootstrap-server localhost:9092
+	>hello world
+	>topic demo
+5. read the events
+		.\bin\windows\kafka-console-consumer.bat --topic topic_demo --from-beginning --bootstrap-server localhost:9002
+		hello world
+		topic demo
+		
+	.
